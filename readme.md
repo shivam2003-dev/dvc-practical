@@ -146,6 +146,28 @@ head -n 5 data/customer.csv
 - Running `dvc add` but not committing the updated `.dvc` file to Git.
 - Using `/tmp/dvc-storage` and losing artifacts after system cleanup.
 
+## DVC Best Practices
+
+- Use a persistent remote (S3/GCS/Azure/SSH/shared storage), not temporary paths like `/tmp`.
+- Always run both `git push` and `dvc push` after updating data or model artifacts.
+- Commit `.dvc` files (and `dvc.lock`/`dvc.yaml` if using pipelines) in the same Git commit as code changes.
+- Keep raw/large artifacts in DVC only; avoid force-adding large data directly to Git.
+- Run `dvc status` before commits to confirm metadata and workspace are in sync.
+- After switching branches or pulling new commits, run `dvc pull` (or `dvc checkout`) to materialize correct data versions.
+- Use tags/releases in Git for milestone experiments so code and data versions are reproducible.
+- Store DVC remote credentials securely (environment variables/credential managers), not inside committed files.
+- Use `dvc gc` carefully and only when you are sure old cache objects are no longer needed.
+
+## DVC Resources
+
+- Official Docs: https://dvc.org/doc
+- Get Started Guide: https://dvc.org/doc/start
+- Command Reference: https://dvc.org/doc/command-reference
+- Pipeline Stages (`dvc repro`, `dvc.yaml`): https://dvc.org/doc/user-guide/project-structure/dvcyaml-files
+- Remotes and Storage Backends: https://dvc.org/doc/user-guide/data-management/remote-storage
+- DVC + Git Concepts: https://dvc.org/doc/use-cases/versioning-data-and-models
+- DVC GitHub Repository: https://github.com/iterative/dvc
+
 ## DVC and Git Cheatsheet (Side by Side)
 
 | Goal | Git | DVC |
