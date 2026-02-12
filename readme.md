@@ -160,6 +160,7 @@ head -n 5 data/customer.csv
 
 ## DVC Resources
 
+- AWS S3 Setup Guide (this repo): `docs/dvc-aws-s3-setup.md`
 - Official Docs: https://dvc.org/doc
 - Get Started Guide: https://dvc.org/doc/start
 - Command Reference: https://dvc.org/doc/command-reference
