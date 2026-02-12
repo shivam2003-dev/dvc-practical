@@ -6,4 +6,12 @@ dvc remote add -d myremote /tmp/dvc-storage
 
 python3 src/data_ingestion.py   
 
-dvc add data/customer.csv     
+dvc add data/customer.csv 
+
+git push 
+dvc push 
+
+python3 src/data_ingestion.py
+
+dvc status
+dvc add  data/customer.csv 
